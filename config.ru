@@ -1,3 +1,3 @@
-require_relative 'config/router'
+require_relative './app'
 
-Router.run!
+App.run!

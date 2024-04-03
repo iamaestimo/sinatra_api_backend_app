@@ -16,3 +16,7 @@ gem "rake", "~> 13.1"
 gem "json", "~> 2.7"
 
 gem "sinatra-contrib", "~> 4.0"
+
+gem "appsignal", "~> 3.6"
+
+gem 'dotenv', groups: [:development, :test]
