@@ -1,6 +1,6 @@
 # READ ME
 
-Sinatra 4.0 API application with ActiveRecord and Sqlite3 database. Uses the `dotenv` gem to manage environment variables.
+Sinatra 4.0 API application with ActiveRecord, Sqlite3 database and Appsignal custom monitoring. Uses the `dotenv` gem to manage environment variables.
 
 ## Steps
 
