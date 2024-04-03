@@ -14,7 +14,13 @@ class App < Sinatra::Base
   # get root route...or all posts
 
   get '/' do
-    Post.all.to_json
+    posts = Post.all
+
+    # set Appsignal custom metric
+    posts_count = posts.count
+    Appsignal.set_gauge("all_posts", posts_count)
+
+    posts.to_json
   end
 
   # fetch individual post

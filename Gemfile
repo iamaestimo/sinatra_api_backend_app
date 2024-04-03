@@ -20,3 +20,5 @@ gem "sinatra-contrib", "~> 4.0"
 gem "appsignal", "~> 3.6"
 
 gem 'dotenv', groups: [:development, :test]
+
+gem "faker", "~> 3.3"

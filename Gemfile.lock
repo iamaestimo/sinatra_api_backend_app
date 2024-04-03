@@ -25,6 +25,8 @@ GEM
     connection_pool (2.4.1)
     dotenv (3.1.0)
     drb (2.2.1)
+    faker (3.3.1)
+      i18n (>= 1.8.11, < 2)
     i18n (1.14.4)
       concurrent-ruby (~> 1.0)
     json (2.7.1)
@@ -79,6 +81,7 @@ PLATFORMS
 DEPENDENCIES
   appsignal (~> 3.6)
   dotenv
+  faker (~> 3.3)
   json (~> 2.7)
   puma (~> 6.4)
   rackup (~> 2.1)

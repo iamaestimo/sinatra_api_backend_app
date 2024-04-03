@@ -1,1 +1,8 @@
+# .env files
 .env
+
+# SQlite databases
+*.sqlite3
+
+# Gemfile lock
+Gemfile.lock
