@@ -4,6 +4,7 @@ require 'sinatra/reloader'
 require 'sinatra/activerecord'
 require './models/post.rb'
 require "appsignal/integrations/sinatra"
+require 'httparty'
 
 class App < Sinatra::Base
   # enable automatic reloading in development
@@ -11,14 +12,30 @@ class App < Sinatra::Base
     register Sinatra::Reloader
   end
 
-  # get root route...or all posts
+  Thread.new do
+    while true do
+      start_time = Time.now
+      url = 'https://openlibrary.org/search/authors.json?q=clavell'
+      $response = HTTParty.get(url)
+      duration = (Time.now - start_time) * 1000
+      Appsignal.add_distribution_value("fetch_books_duration", duration)
+    end
+  end
 
+  # home page
   get '/' do
+    Appsignal.increment_counter("visits_count", 1) 
+    $response.to_json  
+  end
+
+  # all posts
+
+  get '/posts' do
     posts = Post.all
 
     # set Appsignal custom metric
     posts_count = posts.count
-    Appsignal.set_gauge("all_posts", posts_count)
+    Appsignal.set_gauge("all_posts", posts_count, environment: "development")
 
     posts.to_json
   end
